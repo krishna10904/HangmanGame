@@ -1,16 +1,23 @@
-
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Button from './component/Buttons/Button'
+import StartGame from './pages/StartGame'
+import PlayGame from './pages/PlayGame'
+import Home from './pages/Home'
+import { WordContext } from './context/WordContext.js'
+import { useState } from 'react'
 
 function App() {
- 
 
+  const [wordList, setWordList] = useState([]);
+  const [word, setWord] = useState('');
   return (
-    <div>
-      <Button text="Click me" styleType ='error' onClickHandler={()=> console.log("Click me ")} />
-        <Button text="Click me 2 " onClickHandler={()=> console.log("Click me 2 ")} />
-        <Button text="Click me 3" styleType ='success' onClickHandler={()=> console.log("click me 3")} />  
-    </div>
+    <WordContext.Provider value={{ wordList, setWordList, word, setWord }}>
+      <Routes>
+        <Route path='/start' element={<StartGame />} />
+        <Route path='/play' element={<PlayGame />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </WordContext.Provider>
   )
 }
 
