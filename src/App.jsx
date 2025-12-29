@@ -1,17 +1,13 @@
-
-import './App.css'
-import Button from './component/Buttons/Button'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
- 
-
   return (
-    <div>
-      <Button text="Click me" styleType ='error' onClickHandler={()=> console.log("Click me ")} />
-        <Button text="Click me 2 " onClickHandler={()=> console.log("Click me 2 ")} />
-        <Button text="Click me 3" styleType ='success' onClickHandler={()=> console.log("click me 3")} />  
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
